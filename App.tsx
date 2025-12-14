@@ -5,6 +5,13 @@ import Modal from './components/Modal';
 import Calculator from './components/Calculator';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Float, Sparkles, Octahedron, TorusKnot } from '@react-three/drei';
+import type { ThreeElements } from '@react-three/fiber';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends ThreeElements {}
+  }
+}
 
 const FloatingHeroBackground = () => {
   return (
@@ -130,6 +137,70 @@ function App() {
                 </div>
              </div>
            ))}
+        </div>
+      </section>
+
+      {/* Video Lessons Section */}
+      <section className="py-24 bg-slate-900/50 border-t border-slate-800 relative z-10">
+        <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Video Darslar</h2>
+                <div className="w-24 h-1.5 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full"></div>
+                <p className="mt-4 text-slate-400 text-lg">Pifagor teoremasini chuqurroq o'rganish uchun maxsus video darsliklar.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Video 1 */}
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800 group hover:-translate-y-2 transition-transform duration-300">
+                    <div className="relative pb-[56.25%] h-0">
+                        <iframe 
+                            className="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/IlIsTHWN0pA" 
+                            title="Pifagor Teoremasi 1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <div className="p-6">
+                        <h3 className="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Pifagor Teoremasi: Tushuncha</h3>
+                        <p className="text-slate-400 text-sm mt-2">Mavzuni boshlash uchun umumiy tushunchalar.</p>
+                    </div>
+                </div>
+
+                {/* Video 2 */}
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800 group hover:-translate-y-2 transition-transform duration-300">
+                     <div className="relative pb-[56.25%] h-0">
+                        <iframe 
+                            className="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/YompsDlEdtc" 
+                            title="Pifagor Teoremasi 2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <div className="p-6">
+                        <h3 className="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Isboti va Qo'llanilishi</h3>
+                        <p className="text-slate-400 text-sm mt-2">Teoremaning isboti va masalalar yechish.</p>
+                    </div>
+                </div>
+
+                {/* Video 3 */}
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800 group hover:-translate-y-2 transition-transform duration-300">
+                     <div className="relative pb-[56.25%] h-0">
+                        <iframe 
+                            className="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/A1GQ1_lQTo0" 
+                            title="Pifagor Teoremasi 3" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <div className="p-6">
+                        <h3 className="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Hayotiy Misollar</h3>
+                        <p className="text-slate-400 text-sm mt-2">Kundalik hayotda uchrashadigan qiziqarli holatlar.</p>
+                    </div>
+                </div>
+            </div>
         </div>
       </section>
 

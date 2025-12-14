@@ -2,6 +2,13 @@ import React, { useState, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Float, Grid, Stage, Center } from '@react-three/drei';
 import * as THREE from 'three';
+import type { ThreeElements } from '@react-three/fiber';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends ThreeElements {}
+  }
+}
 
 const Triangle3D: React.FC<{ a: number; b: number; c: number }> = ({ a, b, c }) => {
   // Memoize geometry to prevent flicker on re-render, update when inputs change

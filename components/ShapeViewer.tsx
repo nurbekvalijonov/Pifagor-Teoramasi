@@ -2,6 +2,13 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Environment, Grid, Float, Stars, RoundedBox, Cylinder, Box } from '@react-three/drei';
 import * as THREE from 'three';
+import type { ThreeElements } from '@react-three/fiber';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends ThreeElements {}
+  }
+}
 
 interface ShapeProps {
   type: string;
@@ -499,7 +506,7 @@ const DetailedShape: React.FC<ShapeProps> = ({ type }) => {
 
 const ShapeViewer: React.FC<{ type: string }> = ({ type }) => {
   return (
-    <div className="w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-inner relative">
+    <div className="w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-inner relative group cursor-grab active:cursor-grabbing">
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[4, 3, 5]} fov={50} />
         
@@ -512,8 +519,17 @@ const ShapeViewer: React.FC<{ type: string }> = ({ type }) => {
         <DetailedShape type={type} />
         
         <Environment preset="city" blur={0.8} />
-        <OrbitControls enableZoom={true} autoRotate autoRotateSpeed={1} minPolarAngle={0} maxPolarAngle={Math.PI / 1.5} />
+        <OrbitControls 
+          enableZoom={true} 
+          autoRotate 
+          autoRotateSpeed={1} 
+          makeDefault 
+          enablePan={true}
+        />
       </Canvas>
+      <div className="absolute bottom-4 right-4 bg-black/50 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity">
+        Aylantirish uchun suring
+      </div>
     </div>
   );
 };
